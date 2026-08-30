@@ -82,8 +82,7 @@
         '<div class="foot-name">조선 로동자 혁명 축구단</div>' +
         '<div class="foot-slogan">로동자의 힘 • 축구의 영광 • 하나된 승리</div>' +
         '<div class="foot-links">' + links + '</div>' +
-        '<div class="visitor">방문자 수 · TOTAL VISITORS: <span class="odometer" id="visitor-count">00000000</span></div>' +
-        '<div class="disclaimer">이 사이트는 허구입니다.<br>' +
+        '<div class="visitor">방문자 수 · TOTAL VISITORS: <span class="odometer" id="visitor-count">00000000</span></div>'
       '</div></footer>';
   }
 
