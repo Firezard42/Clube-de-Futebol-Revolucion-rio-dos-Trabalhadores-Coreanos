@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선수단 · 조선 로동자 혁명 축구단</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div data-layout="header"></div>
+
+<main class="page-body">
+  <div class="content-block paper-texture">
+    <h2 class="sec-title">선수단 <span class="en">First Team Squad</span></h2>
+    <p style="font-size:13px;margin-bottom:12px;">주체112년 시즌 1군 등록 선수 명단. 선수 카드를 눌러 상세 정보를 확인하십시오.</p>
+    <div class="player-grid" id="squad-grid"></div>
+  </div>
+
+  <div class="content-block paper-texture">
+    <h2 class="sec-title">구단의 전설 <span class="en">Club Legends</span></h2>
+    <p style="font-size:13px;margin-bottom:12px;">조선 로동자 혁명 축구단의 력사에 길이 빛나는 전설적 선수들. 이들의 헌신과 영광은 구단의 자랑이다.</p>
+    <div class="player-grid" id="legend-grid"></div>
+  </div>
+</main>
+
+<div data-layout="footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+(function () {
+  function card(p) {
+    var legend = p.legend ? '<span class="legend-badge">전설</span>' : '';
+    return '<div class="player-card">' +
+      legend +
+      '<span class="shirt-no">' + p.no + '</span>' +
+      '<div class="player-photo">' + LRHC.portrait(p) + '</div>' +
+      '<div class="p-name">' + p.name + '</div>' +
+      '<div class="p-pos">' + p.pos + '</div>' +
+      '<div class="p-flag">' + p.nat + ' · ' + p.age + '세</div>' +
+      '<div class="p-meta">' + p.joined + '년 입단 · ' + p.apps + '경기 · ' + p.goals + '골</div>' +
+      '<a class="card-link" href="player.html?id=' + p.id + '" aria-label="' + p.name + ' 상세"></a>' +
+      '</div>';
+  }
+  var sg = document.getElementById('squad-grid');
+  sg.innerHTML = LRHC.squad.map(card).join('');
+
+  var lg = document.getElementById('legend-grid');
+  lg.innerHTML = LRHC.legends.map(function (l) {
+    var flag = l.firstBrazilian ? '<span class="legend-badge" style="background:#009b3a;color:#fff;border-color:#ffdf00;">1º BR</span>' : '<span class="legend-badge">전설</span>';
+    return '<div class="player-card' + (l.firstBrazilian ? ' hof-highlight' : '') + '">' +
+      flag +
+      '<span class="shirt-no">' + l.no + '</span>' +
+      '<div class="player-photo">' + LRHC.portrait(l, { kit:'#e8c14a' }) + '</div>' +
+      '<div class="p-name">' + l.name + '</div>' +
+      '<div class="p-pos">' + l.pos + '</div>' +
+      '<div class="p-flag">' + l.nat + ' · ' + l.era + '</div>' +
+      '<div class="p-meta">' + l.apps + '경기 · ' + l.goals + '골</div>' +
+      '<a class="card-link" href="player.html?id=' + l.id + '&legend=1"></a>' +
+      '</div>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

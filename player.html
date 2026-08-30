@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선수 정보 · 조선 로동자 혁명 축구단</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div data-layout="header"></div>
+
+<main class="page-body">
+  <a class="back-link" href="squad.html">◀ 선수단으로 돌아가기</a>
+  <div class="content-block paper-texture" id="profile"></div>
+</main>
+
+<div data-layout="footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+(function () {
+  function qs(name) {
+    var m = new RegExp('[?&]' + name + '=([^&]*)').exec(location.search);
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+  var id = qs('id');
+  var host = document.getElementById('profile');
+
+  var p = LRHC.squad.filter(function (x) { return x.id === id; })[0];
+  var legendData = LRHC.legends.filter(function (x) { return x.id === id; })[0];
+  if (!p && legendData) {
+    p = {
+      id: legendData.id, no: legendData.no, name: legendData.name, pos: legendData.pos,
+      nat: legendData.nat, age: '—', joined: legendData.era, apps: legendData.apps,
+      goals: legendData.goals, assists: '—', bio: legendData.bio, legend: true, era: legendData.era,
+      photo: legendData.photo, firstBrazilian: legendData.firstBrazilian
+    };
+  }
+
+  if (!p) {
+    host.innerHTML = '<h2 class="sec-title">선수를 찾을 수 없습니다 <span class="en">Not Found</span></h2>' +
+      '<p>요청하신 선수 정보가 존재하지 않습니다. <a href="squad.html">선수단 명단</a>으로 돌아가십시오.</p>';
+    return;
+  }
+
+  document.title = p.name + ' · 조선 로동자 혁명 축구단';
+
+  var legendNote = p.legend
+    ? '<div class="stamp">구단의 전설</div>'
+    : '';
+  if (p.firstBrazilian) {
+    legendNote += '<div class="stamp" style="border-color:#009b3a;color:#009b3a;">최초의 브라질 선수</div>';
+  }
+
+  var statBoxes =
+    '<div class="stat-boxes">' +
+      '<div class="stat-box"><div class="num">' + p.apps + '</div><div class="lbl">출전 APPS</div></div>' +
+      '<div class="stat-box"><div class="num">' + p.goals + '</div><div class="lbl">득점 GOALS</div></div>' +
+      '<div class="stat-box"><div class="num">' + (p.assists != null ? p.assists : (p.clean != null ? p.clean : '—')) + '</div><div class="lbl">' + (p.assists != null ? '도움 ASSIST' : (p.clean != null ? '무실점 CS' : '기록')) + '</div></div>' +
+      '<div class="stat-box"><div class="num">' + p.no + '</div><div class="lbl">등번호 NO.</div></div>' +
+    '</div>';
+
+  host.innerHTML =
+    '<div class="profile-head">' +
+      '<div class="big-photo">' + LRHC.portrait(p, { kit: p.legend ? '#e8c14a' : '#c1121f' }) + '</div>' +
+      '<div>' +
+        '<h2>' + p.name + '</h2>' +
+        '<div class="p-sub">' + p.pos + ' · ' + p.nat + '</div>' +
+        legendNote +
+        '<div class="big-number">' + p.no + '</div>' +
+      '</div>' +
+    '</div>' +
+    statBoxes +
+    '<h3 class="sub-title">신상 정보 · Perfil</h3>' +
+    '<table class="fact-table">' +
+      '<tr><th>포지션</th><td>' + p.pos + '</td></tr>' +
+      '<tr><th>국적</th><td>' + p.nat + '</td></tr>' +
+      '<tr><th>등번호</th><td>' + p.no + '번</td></tr>' +
+      (p.age !== '—' ? '<tr><th>나이</th><td>' + p.age + '세</td></tr>' : '') +
+      '<tr><th>입단</th><td>' + p.joined + (p.legend ? '' : '년') + '</td></tr>' +
+      (p.era ? '<tr><th>활약 시기</th><td>' + p.era + '</td></tr>' : '') +
+    '</table>' +
+    (p.firstBrazilian
+      ? '<div class="content-block" style="border-top-color:#009b3a;background:linear-gradient(180deg,#eafaf0,#d7f0e0);margin:14px 0;">' +
+          '<div style="font-family:\'Noto Serif KR\',serif;font-weight:900;color:#009b3a;font-size:16px;">★ 력사적 기록 · Marco Histórico</div>' +
+          '<p style="font-size:13.5px;margin-top:6px;">조선 로동자 혁명 축구단은 물론, 조선민주주의인민공화국 땅을 밟은 <b>최초의 브라질 선수</b>. 조선과 브라질 축구 교류의 상징으로 구단 력사에 새로운 장을 열었다.</p>' +
+          '<p style="font-size:12px;color:#0a5c2a;margin-top:4px;">Primeiro jogador brasileiro a atuar pelo clube e em solo da República Popular Democrática da Coreia.</p>' +
+        '</div>'
+      : '') +
+    '<h3 class="sub-title">략력 · Biografia</h3>' +
+    '<div class="narrative"><p>' + p.bio + '</p></div>';
+})();
+</script>
+</body>
+</html>

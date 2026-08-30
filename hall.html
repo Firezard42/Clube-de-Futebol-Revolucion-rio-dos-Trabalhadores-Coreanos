@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>명예의 전당 · 조선 로동자 혁명 축구단</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div data-layout="header"></div>
+
+<main class="page-body">
+  <div class="content-block paper-texture">
+    <h2 class="sec-title">명예의 전당 <span class="en">Hall of Fame</span></h2>
+    <p style="font-size:13px;margin-bottom:14px;">구단의 력사에 길이 남을 위대한 선수들. 그들의 헌신과 영광을 이 벽에 새긴다.</p>
+    <div class="hof-wall" id="hof-wall"></div>
+  </div>
+</main>
+
+<div data-layout="footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+(function () {
+  var wall = document.getElementById('hof-wall');
+  wall.innerHTML = LRHC.hall.map(function (h) {
+    var flag = h.firstBrazilian ? '<span class="first-br">최초의 브라질 선수 · 1º BRASILEIRO</span>' : '';
+    return '<div class="hof-portrait' + (h.firstBrazilian ? ' hof-highlight' : '') + '">' +
+      flag +
+      '<div class="frame-img">' + LRHC.portrait(h, { kit:'#e8c14a' }) + '</div>' +
+      '<h3>' + h.name + '</h3>' +
+      '<div class="period">' + h.era + ' · ' + h.pos + '</div>' +
+      '<div class="hof-stats">통산 ' + h.goals + '골 · ' + h.titles + '</div>' +
+      '<div class="quote">' + h.quote + '</div>' +
+      '</div>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

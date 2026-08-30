@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 340" preserveAspectRatio="xMidYMid slice" role="img" aria-label="혁명의 경기장">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1c4aa0"/>
+      <stop offset="55%" stop-color="#3a6fce"/>
+      <stop offset="100%" stop-color="#7ea0dd"/>
+    </linearGradient>
+    <linearGradient id="conc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c7ccd6"/>
+      <stop offset="100%" stop-color="#8a92a3"/>
+    </linearGradient>
+    <linearGradient id="stand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9aa3b5"/>
+      <stop offset="100%" stop-color="#6b7284"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="20%" r="70%">
+      <stop offset="0%" stop-color="#fff4c0" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#fff4c0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1000" height="340" fill="url(#sky)"/>
+  <rect width="1000" height="340" fill="url(#glow)"/>
+
+  <!-- distant mountains -->
+  <path d="M0,150 L120,80 L210,140 L320,70 L430,150 L520,95 L640,155 L760,85 L880,150 L1000,110 L1000,180 L0,180 Z" fill="#2f5aa8" opacity="0.55"/>
+
+  <!-- monumental brutalist stand (left tower) -->
+  <rect x="40" y="90" width="120" height="180" fill="url(#conc)" stroke="#5c6373"/>
+  <g fill="#5c6373" opacity="0.5">
+    <rect x="52" y="110" width="96" height="8"/><rect x="52" y="128" width="96" height="8"/>
+    <rect x="52" y="146" width="96" height="8"/><rect x="52" y="164" width="96" height="8"/>
+    <rect x="52" y="182" width="96" height="8"/><rect x="52" y="200" width="96" height="8"/>
+  </g>
+  <!-- right tower -->
+  <rect x="840" y="90" width="120" height="180" fill="url(#conc)" stroke="#5c6373"/>
+  <g fill="#5c6373" opacity="0.5">
+    <rect x="852" y="110" width="96" height="8"/><rect x="852" y="128" width="96" height="8"/>
+    <rect x="852" y="146" width="96" height="8"/><rect x="852" y="164" width="96" height="8"/>
+    <rect x="852" y="182" width="96" height="8"/><rect x="852" y="200" width="96" height="8"/>
+  </g>
+
+  <!-- central grandstand -->
+  <polygon points="160,140 840,140 780,270 220,270" fill="url(#stand)" stroke="#5c6373"/>
+  <!-- crowd texture (dots) -->
+  <g fill="#e9edf5" opacity="0.85">
+    <rect x="240" y="160" width="520" height="6"/>
+    <rect x="235" y="175" width="530" height="6"/>
+    <rect x="230" y="190" width="540" height="6"/>
+    <rect x="225" y="205" width="550" height="6"/>
+    <rect x="220" y="220" width="560" height="6"/>
+  </g>
+  <!-- red banner across the crowd -->
+  <rect x="300" y="182" width="400" height="14" fill="#c1121f"/>
+  <text x="500" y="193" text-anchor="middle" font-family="serif" font-size="11" fill="#fff" font-weight="700" letter-spacing="4">혁명의 경기장</text>
+
+  <!-- pitch -->
+  <polygon points="220,270 780,270 1000,340 0,340" fill="#1e7a3c"/>
+  <polygon points="220,270 780,270 1000,340 0,340" fill="none" stroke="#e9edf5" stroke-width="2" opacity="0.6"/>
+  <line x1="500" y1="270" x2="500" y2="340" stroke="#e9edf5" stroke-width="2" opacity="0.6"/>
+  <ellipse cx="500" cy="300" rx="70" ry="18" fill="none" stroke="#e9edf5" stroke-width="2" opacity="0.6"/>
+  <g fill="#187033" opacity="0.5">
+    <polygon points="0,300 1000,300 1000,320 0,320"/>
+  </g>
+
+  <!-- floodlight masts -->
+  <g stroke="#3a4152" stroke-width="4">
+    <line x1="80" y1="90" x2="80" y2="30"/>
+    <line x1="920" y1="90" x2="920" y2="30"/>
+  </g>
+  <rect x="52" y="18" width="56" height="16" fill="#dfe6f2" stroke="#3a4152"/>
+  <rect x="892" y="18" width="56" height="16" fill="#dfe6f2" stroke="#3a4152"/>
+
+  <!-- big red flags on towers -->
+  <g>
+    <line x1="100" y1="90" x2="100" y2="52" stroke="#8b6b12" stroke-width="3"/>
+    <path d="M100,54 l42,8 l-42,10 Z" fill="#c1121f"/>
+    <line x1="900" y1="90" x2="900" y2="52" stroke="#8b6b12" stroke-width="3"/>
+    <path d="M900,54 l-42,8 l42,10 Z" fill="#c1121f"/>
+  </g>
+
+  <!-- giant star emblem on facade -->
+  <g transform="translate(500,120)">
+    <circle r="26" fill="#0a2a63" stroke="#e8c14a" stroke-width="2"/>
+    <polygon points="0,-15 4.4,-4.6 15,-4.6 6.3,2.5 9.5,12.8 0,6.2 -9.5,12.8 -6.3,2.5 -15,-4.6 -4.4,-4.6" fill="#c1121f"/>
+  </g>
+</svg>

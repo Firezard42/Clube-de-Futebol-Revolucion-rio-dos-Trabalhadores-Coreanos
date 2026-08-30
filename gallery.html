@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사진관 · 조선 로동자 혁명 축구단</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div data-layout="header"></div>
+
+<main class="page-body">
+  <div class="content-block paper-texture">
+    <h2 class="sec-title">사진관 <span class="en">Photo Gallery</span></h2>
+    <p style="font-size:13px;margin-bottom:14px;">혁명의 경기장과 선수단의 순간들. 사진을 눌러 설명을 확인하십시오.</p>
+    <div class="gallery-grid" id="gallery"></div>
+  </div>
+</main>
+
+<div data-layout="footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+(function () {
+  // 실제 사진 (real photos, in assets/img). Adicione novas linhas aqui.
+  var photos = [
+    { src:'assets/img/gallery-estadio.jpg', caption:'혁명의 경기장 전경', en:'Vista panorâmica do estádio da revolução' },
+    { src:'assets/img/gallery-entrada.jpg', caption:'선수단 입장', en:'Entrada da equipe' },
+    { src:'assets/img/gallery-torcida.jpg', caption:'붉은 응원단', en:'Esquadrão de torcida vermelha' },
+    { src:'assets/img/gallery-noturno.jpg', caption:'야간 조명 아래의 경기', en:'Jogo sob luzes noturnas' },
+    { src:'assets/img/gallery-trofeu.jpg', caption:'우승 트로피 수여식', en:'Cerimônia de entrega do troféu' },
+    { src:'assets/img/gallery-treino.jpg', caption:'훈련장의 아침', en:'Manhã no campo de treinamento' }
+  ];
+
+  var g = document.getElementById('gallery');
+  g.innerHTML = photos.map(function (ph) {
+    return '<div class="gallery-item" data-en="' + ph.en + '">' +
+      '<img src="' + ph.src + '" alt="' + ph.caption + '" loading="lazy">' +
+      '<div class="cap">' + ph.caption + '</div>' +
+      '</div>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>구단 구성원 · 조선 로동자 혁명 축구단</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div data-layout="header"></div>
+
+<main class="page-body">
+  <div class="content-block paper-texture">
+    <h2 class="sec-title">구단 구성원 <span class="en">Club Members</span></h2>
+    <p style="font-size:13px;margin-bottom:14px;">선수, 코칭스태프, 구단 관계자, 명예 회원으로 구성된 로동혁명축구단의 모든 성원.</p>
+    <div id="members-zone"></div>
+  </div>
+</main>
+
+<div data-layout="footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+(function () {
+  var enMap = {
+    '선수':'Players', '코칭스태프':'Technical Staff',
+    '구단 관계자':'Club Officials', '명예 회원':'Honorary Members'
+  };
+  var zone = document.getElementById('members-zone');
+  var html = '';
+  Object.keys(LRHC.members).forEach(function (group) {
+    html += '<div class="member-group">' +
+      '<h3 class="sub-title">' + group + ' · ' + enMap[group] + '</h3>' +
+      '<div class="member-list">' +
+      LRHC.members[group].map(function (m) {
+        return '<div class="member-item">' +
+          '<div class="m-photo">' + LRHC.avatar(m.name, { initial: m.name.charAt(0) }) + '</div>' +
+          '<div><div class="m-name">' + m.name + '</div><div class="m-role">' + m.role + '</div></div>' +
+          '</div>';
+      }).join('') +
+      '</div></div>';
+  });
+  zone.innerHTML = html;
+})();
+</script>
+</body>
+</html>
